@@ -9,4 +9,4 @@ Pequeno projetinho que detecta movimento e emite alerta quando a distância mín
  * Library for HC-SR04 Ultrasonic (veio no kit que comprei) - http://www.aliexpress.com/store/226959
  
 ## Outros
-    * fritzing (para ver o esquema do circuito) - http://fritzing.org/home/
+ * fritzing (para ver o esquema do circuito) - http://fritzing.org/home/
