@@ -7,21 +7,16 @@ const int PIRPin = 2;
 const int USTrigPin = 11;
 const int USEchoPin = 10;
 const int buzzerPin = 3;
-
-const int min_dist = 200;
-const int alerte_dist = 100;
+const int distanciaMinima = 90;
 
 int sensorState = 0;
-long distance;
 Ultrasonic ultrasonic(USTrigPin, USEchoPin);
 
 void setup() {                
   pinMode(ledVPin, OUTPUT);     
   pinMode(ledAPin, OUTPUT);
   pinMode(PIRPin, INPUT);     
-  pinMode(buzzerPin, OUTPUT);
-  
-  Serial.begin(9600);
+  pinMode(buzzerPin, OUTPUT); 
   
   Timer1.initialize(500000);
   Timer1.attachInterrupt(inverterEstadoLed);
@@ -45,17 +40,12 @@ void loop() {
 void confereDistancia(){
   int distancia = ultrasonic.Ranging(CM);
   
-  if(distancia >= 120) {          
-    Serial.println("For de alcance");
-  }else{
-    if(distancia < 90){
-      tocaAlarmeAviso();
-    }
+  if(distancia < distanciaMinima){
+    tocaAlarmeAviso();
   }
 }
 
 void tocaAlarmeAviso(){
-  Serial.println("Esta Perto!");
  for(int i = 0; i < 5; i++){
     digitalWrite(buzzerPin,HIGH);
     delay(200);
